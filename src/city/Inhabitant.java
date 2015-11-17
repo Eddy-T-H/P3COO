@@ -24,15 +24,25 @@ public class Inhabitant
 	 * @ordered
 	 */
 	private BankAccount account;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	private City city;
 	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
-	public Inhabitant(String name, BankAccount account){
+	public Inhabitant(String name, BankAccount account, City town){
 		this.name=name;
 		this.account=account;
+		this.city = town;
 	}
 	
 	/**
@@ -70,5 +80,10 @@ public class Inhabitant
 	public String getName(){
 		return this.name;
 	}
+	
+	public City getCity() {
+		return city;
+	}
+	
 }
 

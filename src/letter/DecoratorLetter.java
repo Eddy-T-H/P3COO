@@ -37,5 +37,7 @@ public abstract class DecoratorLetter extends Letter
 	 */
 	
 	public abstract void toDo();	
+	
+	
 }
 

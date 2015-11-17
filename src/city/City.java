@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import content.*;
+import exception.NullOrNegativCostException;
 import letter.*;
 
 /**
@@ -53,10 +54,20 @@ public class City
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
 	 * @generated
+	 * @ordered
+	 */
+	private Set<Letter<?>> aorBox;
+	
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
 	 */
 	public City(){
 		this.inhabs = new ArrayList<>();
 		this.postBox= new HashSet<>();
+		this.aorBox = new HashSet<>();
 	}
 	
 	public boolean addInhabitant(Inhabitant inhab){
@@ -78,7 +89,16 @@ public class City
 			letter.toDo();
 		}
 		postBox.clear();
+		
+		System.out.println(aorBox);
+		
+		for(Letter<?> letter : aorBox){
+			letter.toDo();
+		}
+		aorBox.clear();
 	}
+	
+
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,6 +109,17 @@ public class City
 	public boolean sendLetter(Letter<?> letter) {
 		letter.toDo();
 		return this.postBox.add(letter);	
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	public boolean sendAoR(Letter<?> letter) {
+		letter.toDo();
+		return this.aorBox.add(letter);	
 	}
 	
 	public int getDays(){
@@ -103,29 +134,33 @@ public class City
 		return this.inhabs.get(id);
 	}
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws NullOrNegativCostException{
 		City city = new City();
 		city.setDays(7);
 		Random rand = new Random();
 		for(int i=0;i<100;i++){
-			city.addInhabitant(new Inhabitant("inhab" + i, new BankAccount(rand.nextInt(1000)))); 
+			city.addInhabitant(new Inhabitant("inhab" + i, new BankAccount(rand.nextInt(1000)), city)); 
 		}
 		for(int i=1;i<city.getDays();i++){
 			System.out.println("***********************************");
 			System.out.println("Day " + i);
 			city.distributeLetters();
-			int numberOfLetter = rand.nextInt(5)+1;
+			
+			int numberOfLetter = rand.nextInt(1)+1;
 			for(int j=0;j<numberOfLetter;j++){
 				int sender;
 				int receiver;
 				int type;
 				sender = rand.nextInt(100);
 				receiver = rand.nextInt(100);
-				type = rand.nextInt(2);
+				//type = rand.nextInt(3);
+				type = 2;
 				switch(type){
-				case 0 :city.sendLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text(UUID.randomUUID().toString())));
+				case 0 :city.sendLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre no " +i)));
 						break;
 				case 1 :city.sendLetter(new PromissoryNote(city.getInhabitant(sender), city.getInhabitant(receiver), new Money(rand.nextInt(100))));
+						break;
+				case 2 :city.sendLetter(new RegisteredLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre reco no " + i))));
 						break;
 				}
 			}

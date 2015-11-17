@@ -24,6 +24,7 @@ public class Money extends Content
 	 */
 	public Money(double money){
 		this.money=money;
+		super.typeOfContent="a money content ";
 	}
 
 	/**

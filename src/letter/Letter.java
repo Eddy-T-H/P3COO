@@ -26,6 +26,30 @@ public abstract class Letter<T extends Content>
 	 * @generated
 	 * @ordered
 	 */
+	protected String typeLetter;
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	protected String typeContent;
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	public static int id=0;
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
 	protected Inhabitant receiver;
 	
 	/**
@@ -52,6 +76,13 @@ public abstract class Letter<T extends Content>
 	 */
 	boolean inBox;
 	
+	@SuppressWarnings("unchecked")
+	Letter(Content content){
+		id++;
+		this.content=(T)content;
+		this.typeContent=this.content.getTypeOfContent();
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
@@ -59,9 +90,14 @@ public abstract class Letter<T extends Content>
 	 * @ordered
 	 */
 	public void toDo(){
-		
+		if(this.inBox){
+			System.out.println(	"<- " + getReceiverName() + " receives " + this.typeLetter + "whose content is " + this.typeContent + "("  + this.getContent().toString() +")" + " from " + getSenderName());
+		}else{
+			System.out.println(	"-> " + getSenderName() + " mails " + this.typeLetter + "whose content is " + this.typeContent + "(" + this.getContent().toString() + ") from " + getSenderName()+ " for a cost of "+ this.cost + " euros");
+			this.sender.debitInhabitant(this.cost);
+			System.out.println("  -" + this.cost + " euro is debitted from " + getSenderName() + " account whose balance is now " + this.sender.getAccountAmount());
+		}
 	}
-	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->

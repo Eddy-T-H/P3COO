@@ -7,6 +7,7 @@ package letter;
  * @generated
  */
 
+@SuppressWarnings("rawtypes")
 public abstract class DecoratorLetter extends Letter
 {
 	/**
@@ -26,6 +27,7 @@ public abstract class DecoratorLetter extends Letter
 	 */
 	
 	public DecoratorLetter(Letter<?> letter){
+		super(letter.content);
 		this.letter = letter;
 	}
 	

@@ -23,6 +23,7 @@ public class Text extends Content
 	 */
 	public Text(String text){
 		this.text=text;
+		super.typeOfContent="a text content ";
 	}
 
 	/**

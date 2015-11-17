@@ -8,6 +8,7 @@ package content;
  */
 public abstract class Content
 {
+	protected String typeOfContent;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -16,6 +17,9 @@ public abstract class Content
 	 * @ordered
 	 */
 	public abstract String toString() ;
-	
+
+	public String getTypeOfContent() {
+		return typeOfContent;
+	}
 }
 

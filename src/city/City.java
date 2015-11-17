@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import java.util.UUID;
 
 import content.*;
 import exception.NullOrNegativCostException;
@@ -24,7 +23,7 @@ public class City
 	 * @generated
 	 * @ordered
 	 */
-	private String name;
+	//private String name;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,9 +88,6 @@ public class City
 			letter.toDo();
 		}
 		postBox.clear();
-		
-		System.out.println(aorBox);
-		
 		for(Letter<?> letter : aorBox){
 			letter.toDo();
 		}
@@ -119,7 +115,7 @@ public class City
 	 */
 	public boolean sendAoR(Letter<?> letter) {
 		letter.toDo();
-		return this.aorBox.add(letter);	
+		return this.aorBox.add(letter);
 	}
 	
 	public int getDays(){
@@ -146,21 +142,20 @@ public class City
 			System.out.println("Day " + i);
 			city.distributeLetters();
 			
-			int numberOfLetter = rand.nextInt(1)+1;
+			int numberOfLetter = rand.nextInt(4)+1;
 			for(int j=0;j<numberOfLetter;j++){
 				int sender;
 				int receiver;
 				int type;
 				sender = rand.nextInt(100);
 				receiver = rand.nextInt(100);
-				//type = rand.nextInt(3);
-				type = 2;
+				type = rand.nextInt(3);
 				switch(type){
-				case 0 :city.sendLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre no " +i)));
+				case 0 :city.sendLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre no " + Letter.id)));
 						break;
 				case 1 :city.sendLetter(new PromissoryNote(city.getInhabitant(sender), city.getInhabitant(receiver), new Money(rand.nextInt(100))));
 						break;
-				case 2 :city.sendLetter(new RegisteredLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre reco no " + i))));
+				case 2 :city.sendLetter(new RegisteredLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre reco no " + Letter.id))));
 						break;
 				}
 			}

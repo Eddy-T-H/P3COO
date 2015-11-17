@@ -3,6 +3,7 @@ package letter;
 import city.Inhabitant;
 import content.Content;
 import content.Money;
+import content.Text;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,10 +19,11 @@ public class PromissoryNote extends Letter<Money>
 	 * @generated
 	 */
 	public PromissoryNote(Inhabitant sender, Inhabitant receiver,Content content){
+		super(content);
 		super.cost=1+0.01*((Money)content).getValue();
 		super.sender=sender;
 		super.receiver=receiver;
-		super.content=(Money)content;
+		super.typeLetter="a promissory note letter ";
 	}
 
 	/**
@@ -32,19 +34,19 @@ public class PromissoryNote extends Letter<Money>
 	 */
 	
 	public void toDo() {
+		super.toDo();
 		if(super.inBox){
-			System.out.println(	"<- " + getReceiverName() + " receives a promissory letter whose content is a money content (" + super.content.toString() +")" + " from " + getSenderName());
 			super.sender.debitInhabitant(super.content.getValue());
 			System.out.println("  -" + super.content.getValue() + " euro is debitted from " + getSenderName() + " account who balance is now " + super.sender.getAccountAmount());
 			super.receiver.creditInhabitant(super.content.getValue());
 			System.out.println("  +" + getReceiverName() + " account is credited with " + super.content.toString() + "; its balance is now " + super.receiver.getAccountAmount());
-		}else{
-			System.out.println(	"-> " + getSenderName() + " mails a promissory letter whose content is a money content (" + super.content.toString() +")" + " to " + getReceiverName() + " for a cost of "+ super.cost);
-			super.sender.debitInhabitant(this.cost);
-			System.out.println("  -" + super.cost + " euro is debitted from " + getSenderName() + " account who balance is now " + super.sender.getAccountAmount());
+			//ajout d'une thanks letter dans l'inbox
+			ThanksLetter aor = new ThanksLetter(super.sender, super.receiver, super.content);
+			String str = "thanks for " + super.typeLetter + "whose content is " + super.typeContent + "(" + super.content.toString() + ")";
+			aor.content = new Text(str);
+			super.receiver.getCity().sendAoR(aor);
+		}else
 			inBox=true;
-		}	
-	}
-	
+	}	
 }
 

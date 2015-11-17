@@ -6,7 +6,6 @@ package content;
  * <!--  end-user-doc  -->
  * @generated
  */
-
 public class Text extends Content
 {
 	/**
@@ -15,7 +14,6 @@ public class Text extends Content
 	 * @generated
 	 * @ordered
 	 */
-	
 	private String text;
 	
 	/**
@@ -33,7 +31,6 @@ public class Text extends Content
 	 * @generated
 	 * @ordered
 	 */
-	
 	public String toString() {
 		return text;	
 	}

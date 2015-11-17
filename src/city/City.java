@@ -5,14 +5,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import letter.Letter;
+import content.*;
+import letter.*;
 
 /**
  * <!-- begin-user-doc -->
  * <!--  end-user-doc  -->
  * @generated
  */
-
 public class City
 {
 	/**
@@ -21,7 +21,6 @@ public class City
 	 * @generated
 	 * @ordered
 	 */
-	
 	private String name;
 	
 	/**
@@ -30,7 +29,6 @@ public class City
 	 * @generated
 	 * @ordered
 	 */
-	
 	private List<Inhabitant> inhabs;
 	
 	/**
@@ -39,7 +37,6 @@ public class City
 	 * @generated
 	 * @ordered
 	 */
-	
 	private int days;
 	
 	/**
@@ -48,8 +45,7 @@ public class City
 	 * @generated
 	 * @ordered
 	 */
-	
-	private Set<Letter> postBox;
+	private Set<Letter<?>> postBox;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -64,6 +60,10 @@ public class City
 	public boolean addInhabitant(Inhabitant inhab){
 		return this.inhabs.add(inhab);
 	}
+	
+	public boolean addInhabitants(List<Inhabitant> inhabs){
+		return this.inhabs.addAll(inhabs);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,9 +71,11 @@ public class City
 	 * @generated
 	 * @ordered
 	 */
-	
 	public void distributeLetters() {
-		// TODO implement me	
+		for(Letter<?> letter : postBox){
+			letter.toDo();
+		}
+		postBox.clear();
 	}
 	
 	/**
@@ -82,10 +84,26 @@ public class City
 	 * @generated
 	 * @ordered
 	 */
-	
-	public boolean sendLetter(Letter letter) {
+	public boolean sendLetter(Letter<?> letter) {
+		letter.toDo();
 		return this.postBox.add(letter);	
 	}
 	
+	public static void main(String[] args){
+		BankAccount senderBankAccount = new BankAccount(411.);
+		BankAccount receiverBankAccount = new BankAccount(411.);
+		Inhabitant sender = new Inhabitant("inhab 1", senderBankAccount);
+		Inhabitant receiver = new Inhabitant("inhab 2", receiverBankAccount);
+		Content text = new Text("coucou");
+		Content money = new Money(20.);
+		Letter<Text> letter= new SimpleLetter(sender, receiver,text);
+		Letter<Money> letter1= new PromissoryNote(sender, receiver,money);
+		City city = new City();
+		city.addInhabitant(sender);
+		city.addInhabitant(receiver);
+		city.sendLetter(letter);
+		city.sendLetter(letter1);
+		city.distributeLetters();
+	}
 }
 

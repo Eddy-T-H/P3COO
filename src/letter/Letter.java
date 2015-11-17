@@ -2,6 +2,7 @@ package letter;
 
 import city.Inhabitant;
 import content.Content;
+import exception.NullOrNegativCostException;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,17 +18,7 @@ public abstract class Letter<T extends Content>
 	 * @generated
 	 * @ordered
 	 */
-	
-	public Inhabitant sender;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public Inhabitant receiver;
+	protected Inhabitant sender;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -35,17 +26,7 @@ public abstract class Letter<T extends Content>
 	 * @generated
 	 * @ordered
 	 */
-	
-	public double cost;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public T content;
+	protected Inhabitant receiver;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -53,8 +34,7 @@ public abstract class Letter<T extends Content>
 	 * @generated
 	 * @ordered
 	 */
-	
-	public abstract void toDo() ;
+	protected double cost;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -62,22 +42,59 @@ public abstract class Letter<T extends Content>
 	 * @generated
 	 * @ordered
 	 */
+	protected T content;
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	boolean inBox;
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	public void toDo(){
+		
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
 	public double getCost() {
-		// TODO implement me
-		return this.cost;	
+		return this.cost;
 	}
 	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
+	 * @throws NullOrNegativCostException 
 	 * @generated
 	 * @ordered
 	 */
-	
-	public void setCost(double cost) {
-		this.cost+=cost;	
+	public void setCost(double cost) throws NullOrNegativCostException {
+		this.cost+=cost;
+		if (this.cost<= 0)
+			throw new NullOrNegativCostException();
 	}
 	
+	public String getSenderName(){
+		return this.sender.getName();
+	}
+	
+	public String getReceiverName(){
+		return this.receiver.getName();
+	}
+	
+	public Content getContent(){
+		return this.content;
+	}
 }
 

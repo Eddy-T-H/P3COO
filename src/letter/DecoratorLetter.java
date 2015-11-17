@@ -7,7 +7,7 @@ package letter;
  * @generated
  */
 
-public abstract class DecoratorLetter extends Letter<>
+public abstract class DecoratorLetter extends Letter
 {
 	/**
 	 * <!-- begin-user-doc -->
@@ -36,9 +36,6 @@ public abstract class DecoratorLetter extends Letter<>
 	 * @ordered
 	 */
 	
-	public void toDo() {
-		// TODO implement me	
-	}
-	
+	public abstract void toDo();	
 }
 

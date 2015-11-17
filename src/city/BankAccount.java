@@ -15,7 +15,6 @@ public class BankAccount
 	 * @generated
 	 * @ordered
 	 */
-	
 	private double amount;
 	
 	/**
@@ -33,15 +32,13 @@ public class BankAccount
 	 * @generated
 	 * @ordered
 	 */
-	
 	public boolean debit(double amount) {
 		if(amount<=this.amount){
 			this.amount-=amount;
 			return true;
 		}else{
 			return false;
-		}
-				
+		}	
 	}
 	
 	/**
@@ -50,7 +47,6 @@ public class BankAccount
 	 * @generated
 	 * @ordered
 	 */
-	
 	public boolean credit(double amount) {
 		if(amount > 0){
 			this.amount+=amount;
@@ -63,6 +59,5 @@ public class BankAccount
 	public double getAmount(){
 		return this.amount;
 	}
-	
 }
 

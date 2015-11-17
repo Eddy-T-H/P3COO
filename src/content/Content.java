@@ -6,7 +6,6 @@ package content;
  * <!--  end-user-doc  -->
  * @generated
  */
-
 public abstract class Content
 {
 
@@ -16,7 +15,6 @@ public abstract class Content
 	 * @generated
 	 * @ordered
 	 */
-	
 	public abstract String toString() ;
 	
 }

@@ -15,7 +15,6 @@ public class Inhabitant
 	 * @generated
 	 * @ordered
 	 */
-	
 	private String name;
 	
 	/**
@@ -24,7 +23,6 @@ public class Inhabitant
 	 * @generated
 	 * @ordered
 	 */
-	
 	private BankAccount account;
 	
 	/**
@@ -36,6 +34,41 @@ public class Inhabitant
 		this.name=name;
 		this.account=account;
 	}
-
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 */	
+	public boolean creditInhabitant(double amount){
+		return this.account.credit(amount);
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 */
+	public boolean debitInhabitant(double amount){
+		return this.account.debit(amount);
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 */
+	public double getAccountAmount(){
+		return this.account.getAmount();
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 */
+	public String getName(){
+		return this.name;
+	}
 }
 

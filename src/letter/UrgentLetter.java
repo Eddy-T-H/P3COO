@@ -7,15 +7,17 @@ package letter;
  * @generated
  */
 
-public class UrgentLetter extends DecoratorLetter
+public class UrgentLetter<T extends Letter<?>>
 {
+	
+	public Letter<?> letter;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
 	public UrgentLetter(Letter<?> letter){
-		super(letter);
+		
 	}
 
 	/**
@@ -24,9 +26,8 @@ public class UrgentLetter extends DecoratorLetter
 	 * @generated
 	 * @ordered
 	 */
-	
 	public void toDo() {
-		// TODO implement me	
+		this.letter.toDo();
 	}
 	
 }

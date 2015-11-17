@@ -15,7 +15,6 @@ public class Money extends Content
 	 * @generated
 	 * @ordered
 	 */
-	
 	private double money;
 	
 	/**
@@ -33,10 +32,12 @@ public class Money extends Content
 	 * @generated
 	 * @ordered
 	 */
-	
 	public String toString() {
 		return String.valueOf(money);	
 	}
 	
+	public double getValue(){
+		return this.money;
+	}
 }
 

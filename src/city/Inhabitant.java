@@ -3,6 +3,7 @@ package city;
 
 /**
  * <!-- begin-user-doc -->
+ * Inhabitant class
  * <!--  end-user-doc  -->
  * @generated
  */
@@ -11,6 +12,7 @@ public class Inhabitant
 {
 	/**
 	 * <!-- begin-user-doc -->
+	 * Name of the inhabitant
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -19,6 +21,7 @@ public class Inhabitant
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * His BankAccount
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -27,6 +30,7 @@ public class Inhabitant
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * His City
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -36,6 +40,10 @@ public class Inhabitant
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Builder for inhabitant
+	 * @param name his name
+	 * @param account his account
+	 * @param town his city
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
@@ -47,6 +55,9 @@ public class Inhabitant
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Credits the inhabitant BankAccount
+	 * @param amount amount to be credited
+	 * @return true if successful
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */	
@@ -56,6 +67,9 @@ public class Inhabitant
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Debits the inhabitant BankAccount
+	 * @param amount amount to be debited
+	 * @return true if successful
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
@@ -65,6 +79,8 @@ public class Inhabitant
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Getter for the amound on the BankAccount
+	 * @return amount of money
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
@@ -74,6 +90,8 @@ public class Inhabitant
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Getter for the name of the inhabitant
+	 * @return name of the inhabitant
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
@@ -81,6 +99,10 @@ public class Inhabitant
 		return this.name;
 	}
 	
+	/**
+	 *  Getter for the city of the inhabitant
+	 * @return city of the inhabitant
+	 */
 	public City getCity() {
 		return city;
 	}

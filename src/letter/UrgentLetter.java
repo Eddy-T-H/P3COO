@@ -5,6 +5,7 @@ import exception.UrgentLetterException;
 
 /**
  * <!-- begin-user-doc -->
+ * UrgentLetter class
  * <!--  end-user-doc  -->
  * @generated
  */
@@ -13,6 +14,8 @@ public class UrgentLetter<T extends Letter<?>> extends DecoratorLetter
 {
 	/**
 	 * <!-- begin-user-doc -->
+	 * Builder
+	 * @param letter letter that will be marked as urgent
 	 * <!--  end-user-doc  -->
 	 * @throws NullOrNegativCostException 
 	 * @throws UrgentLetterException 
@@ -36,6 +39,7 @@ public class UrgentLetter<T extends Letter<?>> extends DecoratorLetter
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Do the action of the letter and prints the details
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered

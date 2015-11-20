@@ -5,6 +5,7 @@ import exception.NullOrNegativCostException;
 
 /**
  * <!-- begin-user-doc -->
+ * RegisteredLetter class
  * <!--  end-user-doc  -->
  * @generated
  */
@@ -13,6 +14,8 @@ public class RegisteredLetter extends DecoratorLetter
 {
 	/**
 	 * <!-- begin-user-doc -->
+	 * Builder
+	 * @param letter letter that will be registered
 	 * <!--  end-user-doc  -->
 	 * @throws NullOrNegativCostException 
 	 * @generated
@@ -25,6 +28,7 @@ public class RegisteredLetter extends DecoratorLetter
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Do the action of the letter and prints the details
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered

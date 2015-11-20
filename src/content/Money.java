@@ -3,6 +3,7 @@ package content;
 
 /**
  * <!-- begin-user-doc -->
+ * Money class
  * <!--  end-user-doc  -->
  * @generated
  */
@@ -11,6 +12,7 @@ public class Money extends Content
 {
 	/**
 	 * <!-- begin-user-doc -->
+	 * amount of money
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -19,6 +21,8 @@ public class Money extends Content
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Builder for money
+	 * @param amount of money
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
@@ -29,6 +33,7 @@ public class Money extends Content
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * toString method, prints the amount as String
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -37,6 +42,10 @@ public class Money extends Content
 		return String.valueOf(money);	
 	}
 	
+	/**
+	 * Getter for the amount of money
+	 * @return amount of money
+	 */
 	public double getValue(){
 		return this.money;
 	}

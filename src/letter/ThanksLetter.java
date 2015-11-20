@@ -15,7 +15,7 @@ public class ThanksLetter extends Letter<Text> {
 	 * @param reveiver receiver of the letter
 	 * @param Content of the letter (expected Text)
 	 */
-	ThanksLetter(Inhabitant sender, Inhabitant receiver, Content content){
+	public ThanksLetter(Inhabitant sender, Inhabitant receiver, Content content){
 		super(content);
 		super.cost=1;
 		super.sender=sender;

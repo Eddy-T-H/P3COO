@@ -23,7 +23,7 @@ public class RegisteredLetter extends DecoratorLetter
 	public RegisteredLetter(Letter<?> letter) throws NullOrNegativCostException{
 		super(letter);
 		super.letter.addCost(15);
-		super.letter.typeLetter="a registered letter whose content is " + letter.typeLetter;
+		super.letter.typeLetter="a registered letter whose content is " + super.letter.typeLetter;
 	}
 
 	/**

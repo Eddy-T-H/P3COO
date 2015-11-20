@@ -191,23 +191,37 @@ public class City
 			System.out.println("Day " + i);
 			city.distributeLetters();
 			
-			int numberOfLetter = rand.nextInt(4)+1;
+			int numberOfLetter = rand.nextInt(1)+1;
 			for(int j=0;j<numberOfLetter;j++){
 				int sender;
 				int receiver;
 				int type;
 				sender = rand.nextInt(100);
 				receiver = rand.nextInt(100);
-				type = rand.nextInt(4);
+				type = rand.nextInt(2);
 				switch(type){
-				case 0 :city.sendLetter(new UrgentLetter<>(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre no " + Letter.id))));
-						break;
-				case 1 :city.sendLetter(new PromissoryNote(city.getInhabitant(sender), city.getInhabitant(receiver), new Money(rand.nextInt(100))));
-						break;
-				case 2 :city.sendLetter(new RegisteredLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre reco no " + Letter.id))));
-						break;
-				case 3 :city.sendLetter(new UrgentLetter<>(new RegisteredLetter(new UrgentLetter<>(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre no " + Letter.id))))));
-						break;
+				case 0 :
+					city.sendLetter(new UrgentLetter<>(new RegisteredLetter(new PromissoryNote(city.getInhabitant(sender), city.getInhabitant(receiver), new Money(rand.nextInt(100))))));
+					break;
+				case 1 :
+					city.sendLetter(new RegisteredLetter(new UrgentLetter<>(new PromissoryNote(city.getInhabitant(sender), city.getInhabitant(receiver), new Money(rand.nextInt(100))))));
+					break;
+				case 2 :
+					city.sendLetter(new RegisteredLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre reco no " + Letter.id))));
+					break;
+				case 3 :
+					city.sendLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre reco no " + Letter.id)));
+					break;
+				case 4 :
+					city.sendLetter(new UrgentLetter<>(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre no " + Letter.id))));
+					break;
+				case 5 :
+					city.sendLetter(new PromissoryNote(city.getInhabitant(sender), city.getInhabitant(receiver), new Money(rand.nextInt(100))));
+					break;
+				case 6 :
+					city.sendLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre reco no " + Letter.id)));
+					break;
+
 				}
 			}
 		}

@@ -145,7 +145,7 @@ public abstract class Letter<T extends Content>
 	 */
 	public void addCost(double cost) throws NullOrNegativCostException {
 		this.cost+=cost;
-		if (this.cost<= 0)
+		if (this.cost< 0)
 			throw new NullOrNegativCostException();
 	}
 	

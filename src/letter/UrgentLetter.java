@@ -33,8 +33,9 @@ public class UrgentLetter<T extends Letter<?>> extends DecoratorLetter
 				letterTest=((DecoratorLetter)letterTest).letter;
 			}
 		}
-		super.letter.addCost(super.letter.getCost());
-		super.letter.typeLetter= "an urgent letter whose content is " + super.letter.typeLetter;
+		super.cost=letter.cost;
+		super.addCost(super.letter.getCost());
+		super.typeLetter= "an urgent letter whose content is " + super.letter.typeLetter;
 	}
 
 	/**

@@ -22,8 +22,10 @@ public class RegisteredLetter extends DecoratorLetter
 	 */
 	public RegisteredLetter(Letter<?> letter) throws NullOrNegativCostException{
 		super(letter);
+		this.cost=super.letter.getCost()+15;
 		super.letter.addCost(15);
-		super.letter.typeLetter="a registered letter whose content is " + super.letter.typeLetter;
+		this.typeLetter="a registered letter whose content is " + letter.getTypeLetter();
+		letter.setTypeLetter("a registered letter whose content is " + letter.getTypeLetter());
 	}
 
 	/**
@@ -34,14 +36,22 @@ public class RegisteredLetter extends DecoratorLetter
 	 * @ordered
 	 */
 	public void toDo() {
-		if(super.letter.inBox){
+		if(super.inBox){
 			AoR aor = new AoR(super.letter.sender, super.letter.receiver, super.letter.content);
 			String str = "acknowledgement of receipt for " + super.letter.typeLetter + "whose content is " + super.letter.typeContent + "(" + super.letter.content.toString() + ")";
 			aor.content = new Text(str);
 			super.letter.receiver.getCity().sendAoR(aor);
+			letter.toDo();
 		}else{
-			super.letter.toDo();
+			super.inBox=true;
+			letter.toDo();
 		}
+	}
+
+	@Override
+	public double getCost() {
+		// TODO Auto-generated method stub
+		return cost;
 	}
 }
 

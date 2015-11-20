@@ -34,9 +34,9 @@ public class UrgentLetter<T extends Letter<?>> extends DecoratorLetter
 			}
 		}
 		super.letter.addCost(super.letter.getCost());
-		System.out.println(super.letter.typeLetter);
-		super.letter.typeLetter= "an urgent letter whose content is " + letter.typeLetter;
-		System.out.println(super.letter.typeLetter);
+		this.cost=super.letter.getCost()*2;
+		this.typeLetter="an urgent letter whose content is " + letter.getTypeLetter();
+		letter.setTypeLetter("an urgent letter whose content is " + letter.getTypeLetter());
 	}
 
 	/**
@@ -47,7 +47,12 @@ public class UrgentLetter<T extends Letter<?>> extends DecoratorLetter
 	 * @ordered
 	 */
 	public void toDo() {
-		super.letter.toDo();
+		super.toDo();
+	}
+
+	@Override
+	public double getCost() {
+		return cost;
 	}
 	
 }

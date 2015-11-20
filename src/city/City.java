@@ -191,14 +191,14 @@ public class City
 			System.out.println("Day " + i);
 			city.distributeLetters();
 			
-			int numberOfLetter = rand.nextInt(1)+1;
+			int numberOfLetter = rand.nextInt(9)+1;
 			for(int j=0;j<numberOfLetter;j++){
 				int sender;
 				int receiver;
 				int type;
 				sender = rand.nextInt(100);
 				receiver = rand.nextInt(100);
-				type = rand.nextInt(2);
+				type = rand.nextInt(7);
 				switch(type){
 				case 0 :
 					city.sendLetter(new UrgentLetter<>(new RegisteredLetter(new PromissoryNote(city.getInhabitant(sender), city.getInhabitant(receiver), new Money(rand.nextInt(100))))));

@@ -108,8 +108,8 @@ public abstract class Letter<T extends Content>
 			System.out.println(	"<- " + getReceiverName() + " receives " + this.typeLetter + "whose content is " + this.typeContent + "("  + this.getContent().toString() +")" + " from " + getSenderName());
 		}else{
 			System.out.println(	"-> " + getSenderName() + " mails " + this.typeLetter + "whose content is " + this.typeContent + "(" + this.getContent().toString() + ") from " + getSenderName()+ " for a cost of "+ this.cost + " euros");
-			this.sender.debitInhabitant(this.cost);
-			System.out.println("  -" + this.cost + " euro is debitted from " + getSenderName() + " account whose balance is now " + this.sender.getAccountAmount());
+			this.getSender().debitInhabitant(this.getCost());
+			System.out.println("  -" + this.cost + " euro is debitted from " + getSenderName() + " account whose balance is now " + this.getSender().getAccountAmount());
 		}
 	}
 	/**
@@ -134,6 +134,14 @@ public abstract class Letter<T extends Content>
 	 */
 	public String getContentType() {
 		return this.typeContent;
+	}
+	
+	public void setTypeLetter(String str){
+		this.typeLetter=str;
+	}
+
+	public String getTypeLetter() {
+		return this.typeLetter;
 	}
 	
 	/**
@@ -171,6 +179,14 @@ public abstract class Letter<T extends Content>
 	 */
 	public Content getContent(){
 		return this.content;
+	}
+
+	public Inhabitant getSender() {
+		return sender;
+	}
+
+	public Inhabitant getReceiver() {
+		return receiver;
 	}
 }
 

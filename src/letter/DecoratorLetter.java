@@ -1,5 +1,7 @@
 package letter;
 
+import city.Inhabitant;
+import exception.NullOrNegativCostException;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,6 +37,30 @@ public abstract class DecoratorLetter extends Letter
 	public DecoratorLetter(Letter<?> letter){
 		super(letter.content);
 		this.letter = letter;
+		this.sender = letter.sender;
+		this.receiver = letter.receiver;
+		this.typeContent = letter.typeContent;
+		this.typeLetter = letter.typeLetter;
+	}
+	
+	public String getSenderName(){
+		return this.letter.getSenderName();
+	}
+	
+	public String getReceiverName(){
+		return this.letter.getReceiverName();
+	}
+	
+	public void setTypeLetter(String str){
+		this.letter.typeLetter=str;
+	}
+	
+	public String getTypeLetter(){
+		return this.typeLetter;
+	}
+	
+	public void addCost(double bitsch) throws NullOrNegativCostException{
+		this.letter.addCost(bitsch);
 	}
 	
 	/**
@@ -44,7 +70,9 @@ public abstract class DecoratorLetter extends Letter
 	 * @generated
 	 * @ordered
 	 */
-	public abstract void toDo();	
+	public void toDo(){
+		letter.toDo();
+	}
 	
 	
 }

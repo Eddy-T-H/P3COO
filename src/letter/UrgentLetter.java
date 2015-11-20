@@ -1,7 +1,5 @@
 package letter;
 
-import java.lang.reflect.Type;
-
 import exception.NullOrNegativCostException;
 import exception.UrgentLetterException;
 

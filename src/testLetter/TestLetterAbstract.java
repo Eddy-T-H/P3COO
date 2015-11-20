@@ -50,7 +50,7 @@ public abstract class TestLetterAbstract<T extends Content> extends TestCase{
 	public void testIsInstanceOf(){
 		assertTrue(this.letter instanceof Letter<?>);
 		if(content instanceof Text){
-			assertTrue(this.letter instanceof SimpleLetter);
+			assertTrue(this.letter instanceof SimpleLetter || this.letter instanceof ThanksLetter || this.letter instanceof AoR);
 		}else{
 			assertTrue(this.letter instanceof PromissoryNote);
 		}

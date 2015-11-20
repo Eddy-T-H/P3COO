@@ -8,6 +8,7 @@ import java.util.Set;
 
 import content.*;
 import exception.NullOrNegativCostException;
+import exception.UrgentLetterException;
 import letter.*;
 
 /**
@@ -130,7 +131,7 @@ public class City
 		return this.inhabs.get(id);
 	}
 	
-	public static void main(String[] args) throws NullOrNegativCostException{
+	public static void main(String[] args) throws NullOrNegativCostException, UrgentLetterException{
 		City city = new City();
 		city.setDays(7);
 		Random rand = new Random();
@@ -149,13 +150,15 @@ public class City
 				int type;
 				sender = rand.nextInt(100);
 				receiver = rand.nextInt(100);
-				type = rand.nextInt(3);
+				type = rand.nextInt(4);
 				switch(type){
-				case 0 :city.sendLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre no " + Letter.id)));
+				case 0 :city.sendLetter(new UrgentLetter<>(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre no " + Letter.id))));
 						break;
 				case 1 :city.sendLetter(new PromissoryNote(city.getInhabitant(sender), city.getInhabitant(receiver), new Money(rand.nextInt(100))));
 						break;
 				case 2 :city.sendLetter(new RegisteredLetter(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre reco no " + Letter.id))));
+						break;
+				case 3 :city.sendLetter(new UrgentLetter<>(new RegisteredLetter(new UrgentLetter<>(new SimpleLetter(city.getInhabitant(sender), city.getInhabitant(receiver), new Text("Lettre no " + Letter.id))))));
 						break;
 				}
 			}

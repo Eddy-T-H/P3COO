@@ -1,5 +1,9 @@
 package letter;
 
+import java.lang.reflect.Type;
+
+import exception.NullOrNegativCostException;
+import exception.UrgentLetterException;
 
 /**
  * <!-- begin-user-doc -->
@@ -7,17 +11,29 @@ package letter;
  * @generated
  */
 
-public class UrgentLetter<T extends Letter<?>>
+public class UrgentLetter<T extends Letter<?>> extends DecoratorLetter
 {
-	
-	public Letter<?> letter;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
+	 * @throws NullOrNegativCostException 
+	 * @throws UrgentLetterException 
 	 * @generated
 	 */
-	public UrgentLetter(Letter<?> letter){
-		
+
+	public UrgentLetter(Letter<?> letter) throws NullOrNegativCostException, UrgentLetterException{
+		super(letter);
+		Letter<?> letterTest=letter;
+		while(letterTest instanceof DecoratorLetter){
+			if(letterTest instanceof UrgentLetter){
+				throw new UrgentLetterException();
+			}
+			else{
+				letterTest=((DecoratorLetter)letterTest).letter;
+			}
+		}
+		super.letter.addCost(super.letter.getCost());
+		super.letter.typeLetter= "an urgent letter whose content is " + super.letter.typeLetter;
 	}
 
 	/**
@@ -27,7 +43,7 @@ public class UrgentLetter<T extends Letter<?>>
 	 * @ordered
 	 */
 	public void toDo() {
-		this.letter.toDo();
+		super.letter.toDo();
 	}
 	
 }

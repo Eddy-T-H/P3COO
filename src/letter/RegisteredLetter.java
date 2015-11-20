@@ -17,11 +17,10 @@ public class RegisteredLetter extends DecoratorLetter
 	 * @throws NullOrNegativCostException 
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	public RegisteredLetter(Letter<?> letter) throws NullOrNegativCostException{
 		super(letter);
 		super.letter.addCost(15);
-		super.typeLetter="a registered letter whose content is " + letter.typeLetter;
+		super.letter.typeLetter="a registered letter whose content is " + letter.typeLetter;
 	}
 
 	/**

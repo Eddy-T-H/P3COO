@@ -111,6 +111,16 @@ public abstract class Letter<T extends Content>
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	public String getContentType() {
+		return this.typeContent;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
 	 * @throws NullOrNegativCostException 
 	 * @generated
 	 * @ordered

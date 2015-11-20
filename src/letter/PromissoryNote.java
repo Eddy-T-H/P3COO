@@ -41,7 +41,7 @@ public class PromissoryNote extends Letter<Money>
 			super.receiver.creditInhabitant(super.content.getValue());
 			System.out.println("  +" + getReceiverName() + " account is credited with " + super.content.toString() + "; its balance is now " + super.receiver.getAccountAmount());
 			//ajout d'une thanks letter dans l'inbox
-			ThanksLetter aor = new ThanksLetter(super.sender, super.receiver, super.content);
+			ThanksLetter aor = new ThanksLetter(super.receiver, super.sender, super.content);
 			String str = "thanks for " + super.typeLetter + "whose content is " + super.typeContent + "(" + super.content.toString() + ")";
 			aor.content = new Text(str);
 			super.receiver.getCity().sendAoR(aor);

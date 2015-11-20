@@ -6,6 +6,7 @@ import exception.NullOrNegativCostException;
 
 /**
  * <!-- begin-user-doc -->
+ * Letter class
  * <!--  end-user-doc  -->
  * @generated
  */
@@ -14,6 +15,7 @@ public abstract class Letter<T extends Content>
 {
 	/**
 	 * <!-- begin-user-doc -->
+	 * Inhabitant who sent the letter
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -22,6 +24,7 @@ public abstract class Letter<T extends Content>
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Type of the letter
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -30,6 +33,7 @@ public abstract class Letter<T extends Content>
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Type of the content
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -38,6 +42,7 @@ public abstract class Letter<T extends Content>
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * unique id of the letter
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -46,6 +51,7 @@ public abstract class Letter<T extends Content>
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Inhabitant who receives the letter
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -54,6 +60,7 @@ public abstract class Letter<T extends Content>
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Price of the letter
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -62,6 +69,7 @@ public abstract class Letter<T extends Content>
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Content of the letter
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -70,12 +78,17 @@ public abstract class Letter<T extends Content>
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Mark the letter as sent
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
 	 */
 	boolean inBox;
 	
+	/**
+	 * Builder
+	 * @param content content of the letter
+	 */
 	@SuppressWarnings("unchecked")
 	Letter(Content content){
 		id++;
@@ -85,6 +98,7 @@ public abstract class Letter<T extends Content>
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Do the action of the letter and prints the details
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -100,6 +114,8 @@ public abstract class Letter<T extends Content>
 	}
 	/**
 	 * <!-- begin-user-doc -->
+	 * Getter for cost
+	 * @return cost of the letter
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
@@ -110,6 +126,8 @@ public abstract class Letter<T extends Content>
 	
 	/**
 	 * <!-- begin-user-doc -->
+	 * Adds an amount to the current cost of the letter
+	 * @param cost amount to be asses
 	 * <!--  end-user-doc  -->
 	 * @throws NullOrNegativCostException 
 	 * @generated
@@ -121,14 +139,26 @@ public abstract class Letter<T extends Content>
 			throw new NullOrNegativCostException();
 	}
 	
+	/**
+	 * Getter for the name of the sender
+	 * @return name of the sender
+	 */
 	public String getSenderName(){
 		return this.sender.getName();
 	}
 	
+	/** 
+	 * Getter for the name of the receiver
+	 * @return name of the receiver
+	 */
 	public String getReceiverName(){
 		return this.receiver.getName();
 	}
 	
+	/**
+	 * Getter for the content
+	 * @return Content of the letter
+	 */
 	public Content getContent(){
 		return this.content;
 	}
